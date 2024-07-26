@@ -1,10 +1,10 @@
-import "./App.css";
+// import "./App.css";
 import LayoutFlow from "./components/graph";
 
 function App() {
   return (
     <>
-      <div style={{ height: "400px", width: "100vw" }}>
+      <div style={{ height: "95vh", width: "95vw", border: "1px solid black" }}>
         <div>Hello</div>
         <LayoutFlow />
       </div>

@@ -8,6 +8,8 @@ import {
   useEdgesState,
   type Node,
   type Edge,
+  OnConnect,
+  Connection,
 } from "@xyflow/react";
 import dagre from "dagre";
 
@@ -70,16 +72,16 @@ const LayoutFlow = () => {
   );
   const [edges, setEdges, onEdgesChange] = useEdgesState(layoutedEdges);
 
-  const onConnect = useCallback(
-    (params: any) =>
-      setEdges((eds: any) =>
-        addEdge(
-          { ...params, type: ConnectionLineType.SmoothStep, animated: true },
-          eds
-        )
-      ),
-    []
-  );
+  const onConnect: OnConnect = useCallback((params: Connection) => {
+    setEdges((eds: any) => {
+      addEdge(
+        { ...params, type: ConnectionLineType.SmoothStep, animated: true },
+        eds
+      );
+      console.log({ params });
+    });
+  }, []);
+
   const onLayout = useCallback(
     (direction: string) => {
       const { nodes: layoutedNodes, edges: layoutedEdges } =
